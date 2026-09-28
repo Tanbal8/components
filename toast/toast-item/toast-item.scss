@@ -1,0 +1,59 @@
+.toast {
+    $gap: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    width: fit-content;
+    max-width: 400px;
+    min-width: 250px;
+    height: 70px;
+    padding: $gap;
+    box-sizing: border-box;
+    background-color: #393939;
+    border-left: 8px solid;
+    border-right: 8px solid;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transform: translateX(-110%);
+    margin-top: 0;
+    transition: transform 0.1s ease, margin-top 0.1s ease 0.1s;
+    
+    &.showing {
+        transform: translateX(0);
+    }
+
+    &.removing {
+        margin-top: -80px;
+    }
+
+    &-status-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 24px;
+    }
+
+    &-content {
+        flex: 1;
+        min-width: 0;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 0.4rem;
+    }
+
+    &-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    &-message {
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
