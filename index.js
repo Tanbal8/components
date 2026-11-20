@@ -6,3 +6,6 @@ export {
     default as Dialog,
     dialog,
 } from './dialog/Dialog';
+export {
+    default as DateInput,
+} from './date-input/DateInput';
