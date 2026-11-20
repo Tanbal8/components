@@ -1,8 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Dialog, dialog, Toast, toast } from '../index.js';
+import DateInput from '../date-input/DateInput.jsx';
+import PersianDate from 'tanbal-persian-date';
 
 const App = () => {
+    const today = PersianDate.today();
     return (
         <>
             <Toast />
@@ -67,6 +70,26 @@ const App = () => {
                     ],
                 }));
             }}>custom colors dialog</button>
+
+
+            {/* Date Input */}
+            <h2>Date Input</h2>
+            <DateInput
+                initialDate={today}
+            />
+
+            <DateInput
+                initialDate={today}
+                format={date => date.toPersianString()}
+                onChange={date => alert(date)}
+            />
+
+            <DateInput
+                initialDate={today}
+                format={date => date.toDate('/')}
+                nextDaysLimit
+                nextDaysLimitCallback={() => toast.error('You can\'t select days after today')}
+            />
 
             </center>
         </>
