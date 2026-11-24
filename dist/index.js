@@ -451,48 +451,53 @@ var v = (e) => e[0].toUpperCase() + e.slice(1), y = (e, t = 7) => (e % t + t) % 
 	"دی",
 	"بهمن",
 	"اسفند"
-], S = ({ initialDate: e = _.today(), nextDaysLimit: s = !1, nextDaysLimitCallback: c = () => {}, format: l = (e) => e.toString(), onChange: u = () => {} }) => {
-	let [d, f] = n(e), [p, m] = n(!0), h = () => {
-		if (s && d.isToday()) {
+], S = ({ initialDate: e = _.today(), nextDaysLimit: s = !1, nextDaysLimitCallback: c = () => {}, format: l = (e) => e.toString(), onChange: u = () => {}, backgroundColor: d = "#Fff", buttonBackgroundColor: f = "#ddd", buttonSize: p = 15, ...m }) => {
+	let [h, g] = n(e), [v, y] = n(!0), b = () => {
+		if (s && h.isToday()) {
 			c();
 			return;
 		}
-		let e = d.nextDay();
-		f(e);
-	}, g = () => {
-		let e = d.previousDay();
-		f(e);
+		let e = h.nextDay();
+		g(e);
+	}, x = () => {
+		let e = h.previousDay();
+		g(e);
 	};
 	return t(() => {
-		if (p) {
-			m(!1);
+		if (v) {
+			y(!1);
 			return;
 		}
-		u(d);
-	}, [d]), console.log(d), /* @__PURE__ */ i("div", {
+		u(h);
+	}, [h]), /* @__PURE__ */ i("div", {
 		className: "date-input",
 		children: [/* @__PURE__ */ r("input", {
 			type: "text",
-			value: l(d),
+			name: "date-input",
+			value: l(h),
 			readOnly: !0,
 			onKeyDown: (e) => {
 				switch (e.preventDefault(), e.key) {
 					case "ArrowUp":
-						h();
+						b();
 						break;
-					case "ArrowDown": g();
+					case "ArrowDown": x();
 				}
-			}
+			},
+			style: { backgroundColor: d },
+			...m
 		}), /* @__PURE__ */ i("div", {
 			className: "date-input-buttons",
 			children: [/* @__PURE__ */ r("button", {
 				type: "button",
-				onClick: h,
-				children: /* @__PURE__ */ r(o, {})
+				onClick: b,
+				style: { backgroundColor: f },
+				children: /* @__PURE__ */ r(o, { size: p })
 			}), /* @__PURE__ */ r("button", {
 				type: "button",
-				onClick: g,
-				children: /* @__PURE__ */ r(a, {})
+				onClick: x,
+				style: { backgroundColor: f },
+				children: /* @__PURE__ */ r(a, { size: p })
 			})]
 		})]
 	});

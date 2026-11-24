@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
-import './date-input.scss';
 import PersianDate from 'tanbal-persian-date';
+import './date-input.scss';
 
 const DateInput = ({
     initialDate = PersianDate.today(),
@@ -9,6 +9,10 @@ const DateInput = ({
     nextDaysLimitCallback = () => {},
     format = date => date.toString(),
     onChange = () => {},
+    backgroundColor = '#Fff',
+    buttonBackgroundColor = '#ddd',
+    buttonSize = 15,
+    ...props
 }) => {
     const [currentDate, setCurrentDate] = useState(initialDate);
     const [isFirstRender, setIsFirstRender] = useState(true);
@@ -50,28 +54,38 @@ const DateInput = ({
         onChange(currentDate);
     }, [currentDate]);
 
-    console.log(currentDate);
-
     return (
         <div className="date-input">
             <input
                 type="text"
+                name='date-input'
                 value={format(currentDate)}
                 readOnly={true}
                 onKeyDown={onkeyDown}
+                style={{
+                    backgroundColor: backgroundColor,
+                }}
+                { ...props }
             />
             <div className='date-input-buttons'>
                 <button
                     type="button"
                     onClick={goToNextDay}
+                    style={{
+                        backgroundColor: buttonBackgroundColor,
+                    }}
                 >
-                    <FaCaretUp />
+                    <FaCaretUp size={buttonSize} />
                 </button>
                 <button
                     type="button"
                     onClick={goToPreviousDay}
+                    style={{
+                        backgroundColor: buttonBackgroundColor,
+
+                    }}
                 >
-                    <FaCaretDown />
+                    <FaCaretDown size={buttonSize} />
                 </button>
             </div>
         </div>

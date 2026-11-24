@@ -1,6 +1,6 @@
 {
   "name": "tanbal-components",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A collection of useful and reusable components.",
   "keywords": [
     "react",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "react-icons": "^5.7.0",
+    "tanbal-components": "^1.0.12",
     "tanbal-persian-date": "^1.0.1"
   },
   "devDependencies": {
